@@ -1,27 +1,4 @@
-from itertools import combinations
 import tkinter as tk
-#
-# class Table:
-#     def __init__(self, rows, columns):
-#         self.rows = rows
-#         self.columns = columns
-#         self.table = [["." for _ in range(columns)] for _ in range(rows)]
-#
-#     def update_cell(self, row, column):
-#         if 0 <= row < self.rows and 0 <= column < self.columns:
-#             self.table[row][column] = "X"
-#         else:
-#             print("Invalid row or column index")
-#
-#     def update_cell_ultra(self, row, column, value):
-#         if 0 <= row < self.rows and 0 <= column < self.columns:
-#             self.table[row][column] = value
-#         else:
-#             print("Invalid row or column index")
-#
-#     def display(self):
-#         for row in self.table:
-#             print("|" + "|".join(row) + "|")
 
 
 class GUITable:
@@ -47,8 +24,6 @@ class GUITable:
         self.update_cell(row, column, value)
 
 
-
-
 class ComputationalBiology:
     def __init__(self, activators_count, inhibitors_count, master=None):
         self.activators_count = activators_count
@@ -56,6 +31,7 @@ class ComputationalBiology:
         self.states = self.initialize_states()
         self.regulations = self.generate_regulations()
         self.table = GUITable(master, len(self.regulations)+1, len(self.states)+1)
+        self.initialize_table()
 
     def initialize_states(self):
         states = []  # List of [active_activators, active_inhibitors]
@@ -65,7 +41,6 @@ class ComputationalBiology:
 
         print(states)
         return states
-
 
     def generate_regulations(self):
         """
@@ -88,12 +63,14 @@ class ComputationalBiology:
         print("Regulations length: ", len(regulations))
         return regulations
 
-    def run_regulation_on_states(self):
+    def initialize_table(self):
         for state in self.states:
             self.table.update_cell_ultra(0, self.states.index(state)+1, f"{state[0]},{state[1]}")
 
         for i in range(len(self.regulations)):
             self.table.update_cell_ultra(i+1, 0, f"{i}")
+
+    def run_regulation_on_states(self):
 
         for __state in self.states:
             state = [self.activators_count-__state[0], __state[1]]
@@ -110,9 +87,6 @@ class ComputationalBiology:
                     if regulation[1][0] >= state[0] and regulation[1][1] >= state[1]:
                         self.table.update_cell(self.regulations.index(regulation)+1, self.states.index(__state)+1)
                         # print(f"True 2 : {__state}, {regulation}")
-
-
-
 
 
 if __name__ == "__main__":
