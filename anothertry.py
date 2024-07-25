@@ -74,8 +74,9 @@ class ComputationalBiology:
             if self.is_monotonic(function):
                 all_mono_functions.append(function)
 
-        all_mono_functions.remove((0, 0, 0, 0, 0, 0, 0, 0, 0))
-        all_mono_functions.remove((1, 1, 1, 1, 1, 1, 1, 1, 1))
+        # remove the constant functions for the generic case
+        all_mono_functions = [function for function in all_mono_functions if 1 in function]
+        all_mono_functions = [function for function in all_mono_functions if 0 in function]
         print(all_mono_functions)
         print("Monotonic functions length: ", len(all_mono_functions))
         return all_mono_functions
