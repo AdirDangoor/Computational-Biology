@@ -1,7 +1,6 @@
 import tkinter as tk
 
 
-
 class GUITable:
     def __init__(self, master, rows, columns):
         self.cells = []
@@ -29,22 +28,22 @@ class ComputationalBiology:
     def __init__(self, activators_count, inhibitors_count, master=None):
         self.activators_count = activators_count
         self.inhibitors_count = inhibitors_count
-        self.states = self.initialize_states()
-        self.all_functions = self.all_possible_boolean_functions()
+
+        self.states = self._initialize_states()
+        self.all_functions = self._all_possible_boolean_functions()
+
         self.monotonic_functions = self.all_monotonic_functions()
         self.table = GUITable(master, len(self.monotonic_functions)+1, len(self.states)+1)
 
-    def initialize_states(self):
+    def _initialize_states(self):
         states = []  # List of [active_activators, active_inhibitors]
         for i in range(self.activators_count + 1):
-            # inhibitors will be a negative number when they get activated
             for j in range(self.inhibitors_count + 1):
                 states.append([i, j])
-
-        print(states)
+        print(f"states: {states}")
         return states
 
-    def all_possible_boolean_functions(self):
+    def _all_possible_boolean_functions(self):
         from itertools import product
         # Number of states is (activators_count + 1) * (inhibitors_count + 1)
         num_states = (self.activators_count + 1) * (self.inhibitors_count + 1)
@@ -53,9 +52,11 @@ class ComputationalBiology:
         return boolean_functions
 
     def is_monotonic(self, function):
-        # for each function, we will go through all the inputs that give us 1, and we'll take the state
-        # corresponding to the activators and inhibitors, and we'll check whether a states with more activators
-        # activated or fewer inhibitors activated will give us 1 as well - this will be the increasing monotonicity
+        """
+        for each function, we will go through all the inputs that give us 1, and we'll take the state
+        corresponding to the activators and inhibitors, and we'll check whether a states with more activators
+        activated or fewer inhibitors activated will give us 1 as well - this will be the increasing monotonicity
+        """
         for i in range(len(function)):
             if function[i] == 1:
                 # get the state corresponding to the index i
@@ -77,7 +78,9 @@ class ComputationalBiology:
         # remove the constant functions for the generic case
         all_mono_functions = [function for function in all_mono_functions if 1 in function]
         all_mono_functions = [function for function in all_mono_functions if 0 in function]
-        print(all_mono_functions)
+
+        for i in range(len(all_mono_functions)):
+            print(f"Monotonic function number {i}: {all_mono_functions[i]}")
         print("Monotonic functions length: ", len(all_mono_functions))
         return all_mono_functions
 
@@ -94,13 +97,9 @@ class ComputationalBiology:
                     self.table.update_cell(i+1, j+1)
 
 
-    def dummy(self):
-        print(self.is_monotonic([(0, 0, 0, 1, 0, 0, 0, 0, 0)]))
-
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("Computational Biology Table")
     cb = ComputationalBiology(2, 2, root)
     cb.initialize_table()
-
     root.mainloop()
