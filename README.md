@@ -49,3 +49,10 @@ The output is a Tkinter window displaying a table with the following structure:
 The first row shows the states in the format activators,inhibitors.
 The first column shows the index of the monotonic Boolean functions.
 Cells corresponding to active states (value 1 - for the center node) are marked in red.
+
+The program also outputs to the terminal the states, the monotonic functions, 
+and the number of monotonic functions found.
+
+for example (0,0,0,0,0,0,1,0,0) means that the gene is activated only when we are at the 6'th state  
+which is [2, 0] -> 2 activators and 0 inhibitor,
+and we will see it in the tkinter table as a red cell.

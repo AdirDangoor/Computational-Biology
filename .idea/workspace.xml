@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52bee6a2-5efb-46d2-ba3e-77a477c7617b" name="Changes" comment="after understanding the assignment">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="52bee6a2-5efb-46d2-ba3e-77a477c7617b" name="Changes" comment="done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/anothertry.py" beforeDir="false" afterPath="$PROJECT_DIR$/computational_biology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computational_biology.py" beforeDir="false" afterPath="$PROJECT_DIR$/computational_biology.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,16 +33,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.anothertry.executor": "Run",
-    "Python.computational_biology.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.python computational_biology.py.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.anothertry.executor&quot;: &quot;Run&quot;,
+    &quot;Python.computational_biology.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python computational_biology.py.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="python computational_biology.py" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pythonProject" />

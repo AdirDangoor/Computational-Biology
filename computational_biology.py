@@ -36,14 +36,24 @@ class ComputationalBiology:
         self.table = GUITable(master, len(self.monotonic_functions)+1, len(self.states)+1)
 
     def _initialize_states(self):
+        """
+        Initialize all possible states for the given number of activators and inhibitors
+        the format of the states is [active_activators, active_inhibitors]
+        """
         states = []  # List of [active_activators, active_inhibitors]
         for i in range(self.activators_count + 1):
             for j in range(self.inhibitors_count + 1):
                 states.append([i, j])
+
+        print("states are in format of [active_activators, active_inhibitors], "
+              "for example [0, 1] means 0 activators and 1 inhibitors are active")
         print(f"states: {states}")
         return states
 
     def _all_possible_boolean_functions(self):
+        """
+        Generate all possible boolean functions for the given number of activators and inhibitors
+        """
         from itertools import product
         # Number of states is (activators_count + 1) * (inhibitors_count + 1)
         num_states = (self.activators_count + 1) * (self.inhibitors_count + 1)
@@ -70,6 +80,14 @@ class ComputationalBiology:
         return True
 
     def all_monotonic_functions(self):
+        """
+        Get all monotonic functions from the list of all possible functions
+        The monotonic function format is a list of 0s and 1s, where 1 means that the state do activate the gene
+        The state are in the order of the self.states list
+        """
+        print("\nMonotonic function is a list of 0s and 1s, where 1 means that the state do activate the gene\n"
+              "for example (0,0,0,0,0,0,1,0,0) means that the gene is activated only when we are at the 6'th state\n"
+              "which is [2, 0] -> 2 activators and 0 inhibitors\n")
         all_mono_functions = []
         for function in self.all_functions:
             if self.is_monotonic(function):
